@@ -16,7 +16,7 @@ class DataAnakController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            return datatables()->of(Dataanak::select('*'))
+            return Datatables()->of(Dataanak::select('*'))
             ->addColumn('action', 'dataanak-action')
             ->rawColumns(['action'])
             ->addIndexColumn()

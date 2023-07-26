@@ -1,5 +1,9 @@
 @extends('adminkacab.layouts.app')
 @section('content')
+
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
 <div class="container-fluid py-4">
     <div class="row">
     <div class="col-12">
@@ -93,7 +97,7 @@
             }
         })
 
-        $('#tables').Datatable({
+        $('#tables').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{url('tables')}}",
