@@ -6,8 +6,8 @@
 
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>New Age - Start Bootstrap Theme</title>
-        <link rel="icon" type="image/x-icon" href="/landingpage/assets/favicon.ico" />
+        <link rel="icon" type="image/png" href="/landingpage/assets/img/logokilau.png">
+        <title>Berbagi Pendidikan </title>
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -47,8 +47,8 @@
                     <div class="col-lg-6">
                         <!-- Mashead text and app badges-->
                         <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                            <h1 class="display-1 lh-1 mb-3">Showcase your app beautifully.</h1>
-                            <p class="lead fw-normal text-muted mb-5">Launch your mobile app landing page faster with this free, open source theme from Start Bootstrap!</p>
+                            <h1 class="display-1 lh-1 mb-3">Berbagi Pendidikan</h1>
+                            <p class="lead fw-normal text-muted mb-5">Berbagi pendidikan adalah proses atau tindakan membagikan pengetahuan, keterampilan, dan informasi edukatif kepada orang lain.</p>
                             <div class="d-flex flex-column flex-lg-row align-items-center">
                             <a href="{{route('login')}}" class="btn btn-primary btn-lg" role="button" data-bs-toggle="button">Login</a>
                             </div>

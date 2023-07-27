@@ -33,7 +33,7 @@ Route::controller(AuthController::class)->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('ajax-crud-datatable', [EmployeeController::class, 'index']);
+Route::get('/ajax-crud-datatable', [EmployeeController::class, 'index'])->name('adminkacab.ajax-crud-datatable');
 Route::post('store', [EmployeeController::class, 'store']);
 Route::post('edit', [EmployeeController::class, 'edit']);
 Route::post('delete', [EmployeeController::class, 'destroy']);

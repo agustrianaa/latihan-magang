@@ -12,12 +12,12 @@ class EmployeeController extends Controller
     {
         if(request()->ajax()) {
             return datatables()->of(Employee::select('*'))
-            ->addColumn('action', 'employee-action')
+            ->addColumn('action', 'adminkacab.layouts.employee-action')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
-        return view('index');
+        return view('adminkacab.pages.index');
     }
  
     public function store(Request $request)
