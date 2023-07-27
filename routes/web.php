@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminKacab\DataAnakController;
 use App\Http\Controllers\AdminKacab\DataController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,10 @@ Route::controller(AuthController::class)->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('ajax-crud-datatable', [EmployeeController::class, 'index']);
+Route::post('store', [EmployeeController::class, 'store']);
+Route::post('edit', [EmployeeController::class, 'edit']);
+Route::post('delete', [EmployeeController::class, 'destroy']);
 
 
 Route::middleware(['auth', 'user-access:adminkacab'])->group(function () {
