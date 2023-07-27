@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> 
-<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="icon" type="image/png" href="/landingpage/assets/img/logokilau.png">
 <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 <!-- <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script> -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">

@@ -100,7 +100,7 @@
         $('#tables').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{url('tables')}}",
+            ajax: "{{url('/tables')}}",
             columns:[
                 { data: 'id', name: 'id' },
                 { data: 'nama', name: 'nama' },

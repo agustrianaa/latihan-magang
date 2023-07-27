@@ -17,8 +17,8 @@ class DataAnakController extends Controller
     {
         if(request()->ajax()){
             return Datatables()->of(Dataanak::select('*'))
-            ->addColumn('action', 'dataanak-action')
-            ->rawColumns(['action'])
+            ->addColumn('aksi', 'dataanak-aksi')
+            ->rawColumns(['aksi'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -47,7 +47,7 @@ class DataAnakController extends Controller
             [
                 'nama' => $request->nama,
                 'tempat_lahir' => $request->tempat_lahir,
-                'tanggl_lahir' => $request->tanggl_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
             ]
             );
