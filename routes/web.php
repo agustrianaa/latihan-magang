@@ -33,14 +33,14 @@ Route::controller(AuthController::class)->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/ajax-crud-datatable', [EmployeeController::class, 'index'])->name('adminkacab.ajax-crud-datatable');
-Route::post('store', [EmployeeController::class, 'store']);
-Route::post('edit', [EmployeeController::class, 'edit']);
-Route::post('delete', [EmployeeController::class, 'destroy']);
+// Route::get('/ajax-crud-datatable', [EmployeeController::class, 'index'])->name('adminkacab.ajax-crud-datatable');
+// Route::post('store', [EmployeeController::class, 'store']);
+// Route::post('edit', [EmployeeController::class, 'edit']);
+// Route::post('delete', [EmployeeController::class, 'destroy']);
 
 
 Route::middleware(['auth', 'user-access:adminkacab'])->group(function () {
-    Route::get('/tables', [DataAnakController::class, 'index'])->name('adminkacab.tables');
+    Route::get('/tables', [DataAnakController::class, 'index'])->name('adminkacab.pages.tables');
     Route::post('/store', [DataAnakController::class, 'store'])->name('adminkacab.store');
     //Route::get('ajax-crud-table', [DataAnakController::class, 'index']);
 });

@@ -1,39 +1,46 @@
-@extends('adminkacab.layouts.app')
+@extends('layouts.app')
 @section('content')
 
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<main id="main" class="main">
 
-<div class="container-fluid py-4">
+    <div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Tables</li>
+        <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
     <div class="row">
-    <div class="col-12">
-        <div class="card my-4">
-        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h5 class="text-white text-capitalize ps-3">Data Anak</h5>
-            </div>
-        </div>
-        <div class="card-body px-0 pb-2">
-            <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0" id="tables">
+        <div class="col-lg-12">
+
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">Datatables</h5>
+            <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable" id="tables">
                 <thead>
                 <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tempat Lahir</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Lahir</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Create At</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-                    <th class="text-secondary opacity-7"></th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Tempat Lahir</th>
+                    <th scope="col">Tanggal Lahir</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Create At</th>
+                    <th scope="col">Aksi</th>
                 </tr>
                 </thead>
             </table>
+            <!-- End Table with stripped rows -->
             </div>
         </div>
         </div>
-    </div>
-    </div>
-    <div class="pull-right mb-2">
+        <div class="pull-right mb-2">
         <a class="btn btn-primary" onClick="add()" href="javascript:void(0)"> Tambahkan Data Anak</a>
     </div>
     @if ($message = Session::get('success'))
@@ -41,8 +48,10 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-</div>
+    </div>
+    </section>
 
+    
 <!-- Modal -->
 <div class="modal fade" id="dataanak-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -87,7 +96,8 @@
             </div>
         </div>
     </div>  
-</div>
+</div> <!-- End Modal -->
+
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -142,5 +152,6 @@
         })
     });
 </script>
+</main> <!-- End #main -->
 
 @endsection
