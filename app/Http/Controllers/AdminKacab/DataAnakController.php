@@ -38,11 +38,11 @@ class DataAnakController extends Controller
      */
     public function store(Request $request)
     {
-        $dataanakId = $request->id;
+        // $dataanakId = $request->id;
 
         $dataanak = Dataanak::updateOrCreate(
             [
-                'id' => $dataanakId,
+                'id' => $request->id,
             ],
             [
                 'nama' => $request->nama,

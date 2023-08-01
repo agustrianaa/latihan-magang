@@ -1,57 +1,59 @@
 @extends('layouts.app')
 @section('content')
 
-<main id="main" class="main">
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
+<main id="main" class="main">
     <div class="pagetitle">
-    <h1>Data Tables</h1>
-    <nav>
-        <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active">Data</li>
-        </ol>
-    </nav>
+        <h1>Data Tables</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+                </ol>
+            </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
     <div class="row">
         <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Datatables</h5>
+                        <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
 
-        <div class="card">
-            <div class="card-body">
-            <h5 class="card-title">Datatables</h5>
-            <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
-
-            <!-- Table with stripped rows -->
-            <table class="table datatable" id="tables">
-                <thead>
-                <tr>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Tempat Lahir</th>
-                    <th scope="col">Tanggal Lahir</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Create At</th>
-                    <th scope="col">Aksi</th>
-                </tr>
-                </thead>
-            </table>
-            <!-- End Table with stripped rows -->
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable" id="tables">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Tempat Lahir</th>
+                                    <th scope="col">Tanggal Lahir</th>
+                                    <th scope="col">Jenis Kelamin</th>
+                                    <th scope="col">Create At</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                </div>
             </div>
         </div>
-        </div>
         <div class="pull-right mb-2">
-        <a class="btn btn-primary" onClick="add()" href="javascript:void(0)"> Tambahkan Data Anak</a>
-    </div>
-    @if ($message = Session::get('success'))
+            <a class="btn btn-primary" onClick="add()" href="javascript:void(0)"> Tambahkan Data Anak</a>
+        </div>
+            @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
     </div>
     </section>
+</main> <!-- End #main -->
 
-    
 <!-- Modal -->
 <div class="modal fade" id="dataanak-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -91,6 +93,7 @@
                             <button type="submit" class="btn btn-primary" id="btn-save">Simpan</button>
                         </div>
                     </form>
+                    {{ csrf_field() }}
             </div>
             <div class="modal-footer">
             </div>
@@ -105,7 +108,29 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+
+        $('#DataForm').submit(function(e){
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type: 'post',
+            url: "{{ url('/store')}}",
+            data : formData,
+            cache: false,
+            contentType: false,
+            processData:false,
+            success: (data) => {
+                console.log(data);
+                $("#dataanak-modal").modal('hide');
+                $("#btn-save").html('Submit');
+                $("#btn-save").attr("disabled", false);
+            },
+            error: function(data){
+                console.log(data);
+            }
         })
+    });
 
         $('#tables').DataTable({
             processing: true,
@@ -130,28 +155,7 @@
         $('#id').val('');
     }
 
-    $('#DataForm').submit(function(e){
-        e.preventDefault();
-        var formData = new FormData(this);
-        $.ajax({
-            type: 'POST',
-            url: "{{ url('/store')}}",
-            data : formData,
-            cache:false,
-            contentType: false,
-            processData:false,
-            success: (data) => {
-                console.log(data);
-                $("#dataanak-modal").modal('hide');
-                $("#btn-save").html('Submit');
-                $("#btn-save").attr("disabled", false);
-            },
-            error: function(data){
-                console.log(data);
-            }
-        })
-    });
+    
 </script>
-</main> <!-- End #main -->
 
 @endsection
