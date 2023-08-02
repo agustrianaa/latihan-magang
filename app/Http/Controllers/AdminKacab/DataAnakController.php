@@ -16,9 +16,9 @@ class DataAnakController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            return Datatables()->of(Dataanak::select('*'))
-            // ->addColumn('aksi', 'dataanak-aksi')
-            // ->rawColumns(['aksi'])
+            return DataTables()->of(DataAnak::select('*'))
+            ->addColumn('action', 'adminkacab.dataanak-action')
+            ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -40,7 +40,7 @@ class DataAnakController extends Controller
     {
         // $dataanakId = $request->id;
 
-        $dataanak = Dataanak::updateOrCreate(
+        $dataanak = DataAnak::updateOrCreate(
             [
                 'id' => $request->id,
             ],
@@ -65,9 +65,11 @@ class DataAnakController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        $where = array('id' => $request->id);
+        $dataanak  = DataAnak::where($where)->first();
+        return Response()->json($dataanak);
     }
 
     /**
@@ -81,8 +83,10 @@ class DataAnakController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $dataanak = DataAnak::where('id',$request->id)->delete();
+       
+        return Response()->json($dataanak);
     }
 }

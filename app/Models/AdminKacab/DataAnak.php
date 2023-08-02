@@ -9,5 +9,7 @@ class DataAnak extends Model
 {
     use HasFactory;
 
-    protected $filelable = ['nama', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin'];
+    public $table = 'data_anaks';
+
+    protected $fillable = ['nama', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin'];
 }

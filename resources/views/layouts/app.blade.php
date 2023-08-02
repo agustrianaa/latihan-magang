@@ -6,12 +6,12 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Dashboard - NiceAdmin Bootstrap Template</title>
+<title>Template</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="assets/img/favicon.png" rel="icon">
+<link href="../landingpage/assets/img/logokilau.png" rel="icon">
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
@@ -30,13 +30,7 @@
 <!-- Template Main CSS File -->
 <link href="assets/css/style.css" rel="stylesheet">
 
-<!-- =======================================================
-* Template Name: NiceAdmin
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-======================================================== -->
+
 </head>
 
 <body>
@@ -67,7 +61,6 @@
 <script src="assets/vendor/chart.js/chart.umd.js"></script>
 <script src="assets/vendor/echarts/echarts.min.js"></script>
 <script src="assets/vendor/quill/quill.min.js"></script>
-<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
 <script src="assets/vendor/tinymce/tinymce.min.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
 

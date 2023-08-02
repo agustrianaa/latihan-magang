@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <main id="main" class="main">
@@ -29,14 +30,17 @@
                         <table class="table datatable" id="tables">
                             <thead>
                                 <tr>
+                                    <th scope="col">Id</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Tempat Lahir</th>
                                     <th scope="col">Tanggal Lahir</th>
                                     <th scope="col">Jenis Kelamin</th>
-                                    <th scope="col">Create At</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                
+                            </tbody>
                         </table>
                         <!-- End Table with stripped rows -->
                 </div>
@@ -52,7 +56,7 @@
     @endif
     </div>
     </section>
-</main> <!-- End #main -->
+
 
 <!-- Modal -->
 <div class="modal fade" id="dataanak-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,14 +97,13 @@
                             <button type="submit" class="btn btn-primary" id="btn-save">Simpan</button>
                         </div>
                     </form>
-                    {{ csrf_field() }}
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>  
 </div> <!-- End Modal -->
-
+</main> <!-- End #main -->
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -109,28 +112,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        $('#DataForm').submit(function(e){
-        e.preventDefault();
-        var formData = new FormData(this);
-        $.ajax({
-            type: 'post',
-            url: "{{ url('/store')}}",
-            data : formData,
-            cache: false,
-            contentType: false,
-            processData:false,
-            success: (data) => {
-                console.log(data);
-                $("#dataanak-modal").modal('hide');
-                $("#btn-save").html('Submit');
-                $("#btn-save").attr("disabled", false);
-            },
-            error: function(data){
-                console.log(data);
-            }
-        })
-    });
 
         $('#tables').DataTable({
             processing: true,
@@ -142,7 +123,7 @@
                 { data: 'tempat_lahir', name: 'tempat_lahir' },
                 { data: 'tanggal_lahir', name: 'tanggal_lahir' },
                 { data: 'jenis_kelamin', name: 'jenis_kelamin' },
-                { data: 'action', name: 'action' }, 
+                { data: 'action', name: 'action', orderable: false }, 
             ],
             order: [[0, 'desc']]
         });
@@ -155,7 +136,66 @@
         $('#id').val('');
     }
 
-    
+    //Mengedit data
+    function editData(id){
+    $.ajax({
+        type:"POST",
+        url: "{{ url('edit') }}",
+        data: { id: id },
+        dataType: 'json',
+        success: function(res){
+            $('#DataModal').html("Edit Data");
+            $('#dataanak-modal').modal('show');
+            $('#id').val(res.id);
+            $('#nama').val(res.nama);
+            $('#tempat_lahir').val(res.tempat_lahir);
+            $('#tanggal_lahir').val(res.tanggal_lahir);
+            $('#jenis_kelamin').val(res.jenis_kelamin);
+        }
+    });
+}  
+
+    //Menghapus data
+    function deleteData(id){
+    if (confirm("Delete Data?") == true) {
+        var id = id;
+        // ajax
+        $.ajax({
+            type:"POST",
+            url: "{{ url('delete') }}",
+            data: { id: id },
+            dataType: 'json',
+            success: function(res){
+                var oTable = $('#tables').dataTable();
+                oTable.fnDraw(false);
+            }
+        });
+    }
+}
+    $('#DataForm').submit(function(e){
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type: 'post',
+            url: "{{ url('/store')}}",
+            data : formData,
+            cache: false,
+            contentType: false,
+            processData:false,
+            success: (data) => {
+                console.log(data);
+                $("#dataanak-modal").modal('hide');
+                var oTable = $('#tables').dataTable();
+                oTable.fnDraw(false);
+                $("#btn-save").html('Submit');
+                $("#btn-save").attr("disabled", false);
+            },
+            error: function(data){
+                console.log(data);
+            }
+        })
+    });
+
 </script>
 
 @endsection

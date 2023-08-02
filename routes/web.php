@@ -42,5 +42,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth', 'user-access:adminkacab'])->group(function () {
     Route::get('/tables', [DataAnakController::class, 'index'])->name('adminkacab.pages.tables');
     Route::post('/store', [DataAnakController::class, 'store'])->name('adminkacab.store');
-    
+    Route::post('/edit', [DataAnakController::class, 'edit'])->name('adminkacab.edit');
+    Route::post('/delete', [DataAnakController::class, 'destroy'])->name('adminkacab.destroy');
 });
