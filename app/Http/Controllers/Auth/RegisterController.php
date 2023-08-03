@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminKacab;
+use App\Models\AdminPusat;
+use App\Models\Shelter;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -65,12 +68,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $result =  User::create([
             // 'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
             'password' => Hash::make($data['password']),
         ]);
+        if ($result) {
+            if($result->role == 'adminpusat') {
+                AdminPusat::create([
+                    'nama' => $data['nama'],
+                    'user_id' => $data['user_id'],
+                ]);
+            } else if ($result->role == 'adminkacab'){
+                AdminKacab::create([
+                    'nama' => $data['nama'],
+                    'user_id' => $data['user_id'],
+                ]);
+            } else if ($result->role == 'shelter'){
+                Shelter::create([
+                    'nama' => $data['nama'],
+                    'user_id' => $data['user_id'],
+                ]);
+            }
+            return $result;
+        } else {
+            $user = User::findOrFail($result->id);
+            $user->delete();
+        }
     }
     
 }

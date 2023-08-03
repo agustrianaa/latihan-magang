@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminKacab\BiodataAnakController;
 use App\Http\Controllers\AdminKacab\DataAnakController;
 use App\Http\Controllers\AdminKacab\DataController;
 use App\Http\Controllers\EmployeeController;
@@ -44,4 +45,6 @@ Route::middleware(['auth', 'user-access:adminkacab'])->group(function () {
     Route::post('/store', [DataAnakController::class, 'store'])->name('adminkacab.store');
     Route::post('/edit', [DataAnakController::class, 'edit'])->name('adminkacab.edit');
     Route::post('/delete', [DataAnakController::class, 'destroy'])->name('adminkacab.destroy');
+
+    Route::post('/biodataanak', [BiodataAnakController::class, 'index'])->name('adminkacab.pages.biodataanak');
 });
