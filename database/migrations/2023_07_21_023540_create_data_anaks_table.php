@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('data_anaks', function (Blueprint $table) {
             $table->id();
+            $table->string('nik')->nullable();
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
+            $table->string('alamat')->nullable();
+            $table->string('ortu_wali')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('hobi')->nullable();
             $table->timestamps();
         });
     }

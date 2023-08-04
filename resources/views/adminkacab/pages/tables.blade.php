@@ -198,26 +198,15 @@
 
     //View Biodata Lengkap Anak 
     
-    // function viewData(id) {
-    //     // Lakukan permintaan AJAX untuk mendapatkan data lengkap berdasarkan ID
-    //     $.ajax({
-    //         type: "GET",
-    //         url: "{{ url('biodataanak') }}/" + id,
-    //         success: function (response) {
-    //             // Tampilkan data lengkap dalam modal atau tampilan khusus sesuai kebutuhan Anda
-    //             // Misalnya, Anda bisa menggunakan modal Bootstrap untuk menampilkan data lengkap
-    //             // Contoh: $('#myModal').modal('show');
-    //             // Tampilkan data lengkap dalam elemen HTML sesuai kebutuhan Anda
-    //         },
-    //         error: function (error) {
-    //             console.log(error);
-    //         }
-    //     });
-    // }
-
     function viewData(id) {
-        window.location.href = "{{ url('biodataanak') }}/" + id;
+        // Mendapatkan URL dengan menggunakan route() function dari Laravel
+        var url = "{{ route('adminkacab.view', ':id') }}";
+        url = url.replace(':id', id);
+        
+        // Redirect ke halaman baru
+        window.location.href = url;
     }
+
 
 </script>
 

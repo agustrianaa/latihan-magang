@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminKacab\DataAnakController;
 use App\Http\Controllers\AdminKacab\DataController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,5 +47,5 @@ Route::middleware(['auth', 'user-access:adminkacab'])->group(function () {
     Route::post('/edit', [DataAnakController::class, 'edit'])->name('adminkacab.edit');
     Route::post('/delete', [DataAnakController::class, 'destroy'])->name('adminkacab.destroy');
 
-    Route::post('/biodataanak', [BiodataAnakController::class, 'index'])->name('adminkacab.pages.biodataanak');
+    Route::get('/biodataanak{id}', [DataAnakController::class, 'view'])->name('adminkacab.view');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminKacab;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminKacab\DataAnak;
 use Illuminate\Http\Request;
 
 class BiodataAnakController extends Controller
@@ -10,9 +11,13 @@ class BiodataAnakController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('adminkacab.pages.biodataanak');
+        // Logika untuk mengambil data anak berdasarkan ID
+        // $dataAnak = DataAnak::find($id);
+
+        // // Kembalikan halaman tampilan baru dan kirimkan data anak ke dalam view
+        // return view('adminkacab.pages.biodataanak', compact('dataAnak'));
     }
 
     /**

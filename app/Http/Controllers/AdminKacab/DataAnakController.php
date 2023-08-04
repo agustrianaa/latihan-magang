@@ -25,6 +25,15 @@ class DataAnakController extends Controller
         return view('adminkacab.pages.tables');
     }
 
+    public function view($id)
+{
+    // Logika untuk mengambil data anak berdasarkan ID
+    $dataAnak = DataAnak::find($id);
+
+    // Kembalikan halaman tampilan baru dan kirimkan data anak ke dalam view
+    return view('adminkacab.pages.biodataanak', compact('dataAnak'));
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -49,6 +58,7 @@ class DataAnakController extends Controller
                 'tempat_lahir' => $request->tempat_lahir,
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
+                
             ]
             );
             return Response()->json($dataanak);
