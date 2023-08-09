@@ -11,5 +11,5 @@ class DataAnak extends Model
 
     public $table = 'data_anaks';
 
-    protected $fillable = ['nama', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'alamat', 'ortu_wali', 'agama', 'hobi'];
+    protected $fillable = ['nama', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'alamat', 'ortu_wali', 'agama', 'hobi', 'poto_anak'];
 }

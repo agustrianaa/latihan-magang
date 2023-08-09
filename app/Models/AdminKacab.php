@@ -9,12 +9,12 @@ class AdminKacab extends Model
 {
     use HasFactory;
 
-    protected $filelable = [
+    protected $fillable = [
         'user_id',
         'nama'
     ];
 
     public function user(){
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

@@ -2,7 +2,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo d-flex align-items-center">
+    <a href="{{route('home')}}" class="logo d-flex align-items-center">
         <img src="../landingpage/assets/img/logokilau.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
     </a>
@@ -53,45 +53,6 @@
             <li>
             <hr class="dropdown-divider">
             </li>
-
-            <li class="notification-item">
-            <i class="bi bi-x-circle text-danger"></i>
-            <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-            </div>
-            </li>
-
-            <li>
-            <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-            <i class="bi bi-check-circle text-success"></i>
-            <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-            </div>
-            </li>
-
-            <li>
-            <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-            <i class="bi bi-info-circle text-primary"></i>
-            <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-            </div>
-            </li>
-
-            <li>
-            <hr class="dropdown-divider">
-            </li>
             <li class="dropdown-footer">
             <a href="#">Show all notifications</a>
             </li>
@@ -128,35 +89,6 @@
             </li>
             <li>
             <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-            <a href="#">
-                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                <div>
-                <h4>Anna Nelson</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>6 hrs. ago</p>
-                </div>
-            </a>
-            </li>
-            <li>
-            <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-            <a href="#">
-                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                <div>
-                <h4>David Muldon</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>8 hrs. ago</p>
-                </div>
-            </a>
-            </li>
-            <li>
-            <hr class="dropdown-divider">
-            </li>
 
             <li class="dropdown-footer">
             <a href="#">Show all messages</a>
@@ -165,10 +97,10 @@
         </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
-
+        
         <li class="nav-item dropdown pe-3">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ auth()->User()->name }}
+            {{ auth()->User()->role }}
             </a>
 
             <!-- log out -->
@@ -181,7 +113,8 @@
                 @csrf
             </form>
             </div>
-        </li><!-- End Profile Nav -->
+        </li>
+<!-- End Profile Nav -->
 
     </ul>
     </nav><!-- End Icons Navigation -->

@@ -13,11 +13,7 @@ class BiodataAnakController extends Controller
      */
     public function index($id)
     {
-        // Logika untuk mengambil data anak berdasarkan ID
-        // $dataAnak = DataAnak::find($id);
-
-        // // Kembalikan halaman tampilan baru dan kirimkan data anak ke dalam view
-        // return view('adminkacab.pages.biodataanak', compact('dataAnak'));
+        
     }
 
     /**

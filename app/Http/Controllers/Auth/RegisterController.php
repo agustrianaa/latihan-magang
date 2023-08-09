@@ -53,7 +53,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required', 'string',],
@@ -78,17 +78,17 @@ class RegisterController extends Controller
             if($result->role == 'adminpusat') {
                 AdminPusat::create([
                     'nama' => $data['nama'],
-                    'user_id' => $data['user_id'],
+                    'user_id' => $result->id,
                 ]);
             } else if ($result->role == 'adminkacab'){
                 AdminKacab::create([
                     'nama' => $data['nama'],
-                    'user_id' => $data['user_id'],
+                    'user_id' => $result->id,
                 ]);
             } else if ($result->role == 'shelter'){
                 Shelter::create([
                     'nama' => $data['nama'],
-                    'user_id' => $data['user_id'],
+                    'user_id' => $result->id,
                 ]);
             }
             return $result;

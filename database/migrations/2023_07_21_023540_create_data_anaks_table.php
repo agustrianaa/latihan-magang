@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('ortu_wali')->nullable();
             $table->string('agama')->nullable();
             $table->string('hobi')->nullable();
+            $table->string('poto_anak')->nullable();
             $table->timestamps();
         });
     }

@@ -1,23 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminKacab;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DataOrtuController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        if (auth()-> user()->role == 'adminpusat') {
-            return view('adminpusat.home');
-        } else if(auth()-> user()-> role == 'adminkacab') {
-            return view('adminkacab.home');
-        } else if(auth()-> user()-> role == 'shelter'){
-            return view('shelter.home');
-        } 
+        return view('adminkacab.pages.tablesortu');
     }
 
     /**

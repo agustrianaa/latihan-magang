@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminKacab\BiodataAnakController;
 use App\Http\Controllers\AdminKacab\DataAnakController;
 use App\Http\Controllers\AdminKacab\DataController;
+use App\Http\Controllers\AdminKacab\DataOrtuController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use Dflydev\DotAccessData\Data;
@@ -42,10 +43,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth', 'user-access:adminkacab'])->group(function () {
+    //Halamen tabel data anak
     Route::get('/tables', [DataAnakController::class, 'index'])->name('adminkacab.pages.tables');
     Route::post('/store', [DataAnakController::class, 'store'])->name('adminkacab.store');
     Route::post('/edit', [DataAnakController::class, 'edit'])->name('adminkacab.edit');
     Route::post('/delete', [DataAnakController::class, 'destroy'])->name('adminkacab.destroy');
 
+    //Halaman Biodata Lengkap Anak
     Route::get('/biodataanak{id}', [DataAnakController::class, 'view'])->name('adminkacab.view');
+    Route::get('/editBiodata', [BiodataAnakController::class, 'edit'])->name('adminkacab.edit');
+
+    
+    //Halaman tabel data orang tua
+    Route::get('/tablesortu', [DataOrtuController::class, 'index'])->name('adminkacab.pages.tablesortu'); 
+
 });
